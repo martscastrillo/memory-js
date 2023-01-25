@@ -30,7 +30,7 @@ function gerenerateBoard() {
 	let array = generateIcons();
 
 	let tarjetas = [];
-	for (let i = 0; i < 24; i++) {
+	for (let i = 0; i < 18; i++) {
 		tarjetas.push(`<div class="area_tarjeta" onclick='selectCard(${i})'>
     <div class="tarjeta" id='tarjeta${i}'>
         <div class="cara trasera" id='trasera${i}'>${array[0]}</div>
