@@ -22,8 +22,12 @@ body {
 	font-size: 30px;
 }
 .tablero {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 280px;
+	flex-wrap: wrap;
 	gap: 15px;
 }
 .area_tarjeta,
@@ -73,12 +77,13 @@ body {
 		transform: rotateY(0deg);
 	}
 }
-@media only screen and (max-width: 280px) {
+@media all and (min-width: 768px) {
 	body {
 		gap: 80px;
 	}
 	.tablero {
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		width: 880px;
+
 		gap: 20px;
 	}
 	.area_tarjeta,
