@@ -45,6 +45,7 @@ function gerenerateBoard() {
 
 	tarjetas.sort(() => Math.random() - 0.5);
 	tablero.innerHTML = tarjetas.join("");
+    winner.innerHTML = ` `;
 }
 let selections = [];
 
