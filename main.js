@@ -5,7 +5,9 @@ const start = document.querySelector(".nuevoJuego");
 const areaTarjeta = document.querySelector(".area_tarjeta");
 const trasera = document.querySelector(".trasera");
 const tarjeta = document.querySelector(".tarjeta");
+const winner = document.querySelector(".winner");
 
+let counter = 0;
 gerenerateBoard();
 
 function generateIcons() {
@@ -44,41 +46,41 @@ function gerenerateBoard() {
 	tarjetas.sort(() => Math.random() - 0.5);
 	tablero.innerHTML = tarjetas.join("");
 }
-let selections=[];
+let selections = [];
 
 function selectCard(i) {
-    let tarjeta = document.getElementById('tarjeta'+i);
-    if(tarjeta.style.transform != 'rotateY(180deg)') {
-        tarjeta.style.transform = 'rotateY(180deg)';
-        selections.push(i);
-    }
-    if(selections.length===2){
-        deselect(selections);
-        selections =[];
-    }
+	let tarjeta = document.getElementById("tarjeta" + i);
+	if (tarjeta.style.transform != "rotateY(180deg)") {
+		tarjeta.style.transform = "rotateY(180deg)";
+		selections.push(i);
+	}
+	if (selections.length === 2) {
+		deselect(selections);
+		selections = [];
+	}
 }
+
 function deselect(selections) {
-    setTimeout(()=>{
-        
-        let trasera1 = document.getElementById('trasera'+selections[0]);
-        let trasera2 = document.getElementById('trasera'+selections[1]);
-        if(trasera1.innerHTML !== trasera2.innerHTML){
-            let card1 = document.getElementById('tarjeta'+selections[0]);
-            let card2 = document.getElementById('tarjeta'+selections[1]);
-            card1.style.transform = 'rotate(0deg)';
-            card2.style.transform = 'rotate(0deg)';
-        }
-        else{
-        
-            trasera1.style.background = '#F96E46';
-            trasera2.style.background = '#F96E46';
-         console.log('bien');
-        }
-        console.log(trasera1.innerHTML); console.log(trasera2.innerHTML)
-    }, 1000)
-    
+	setTimeout(() => {
+		let trasera1 = document.getElementById("trasera" + selections[0]);
+		let trasera2 = document.getElementById("trasera" + selections[1]);
+		if (trasera1.innerHTML !== trasera2.innerHTML) {
+			let card1 = document.getElementById("tarjeta" + selections[0]);
+			let card2 = document.getElementById("tarjeta" + selections[1]);
+			card1.style.transform = "rotate(0deg)";
+			card2.style.transform = "rotate(0deg)";
+		} else {
+			trasera1.style.background = "#F96E46";
+			trasera2.style.background = "#F96E46";
+			counter++;
+			counter++;
+			console.log(counter);
+		}
+		if (counter == 18) {
+			winner.innerHTML = `You win!`;
+		}
+	}, 1000);
 }
+function winGame() {}
+winGame();
 start.addEventListener("click", gerenerateBoard);
-
-
-
